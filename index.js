@@ -1,3 +1,4 @@
+require('dotenv').config()
 const express = require('express')
 const app = express()
 const bodyParser = require('body-parser')
@@ -19,9 +20,7 @@ app.use(bodyParser.json()) // for parsing application/json
 app.use(bodyParser.urlencoded({ extended: true })) // for parsing application/x-www-form-urlencoded
     // Khai báo public file statics 
 app.use(express.static('public'))
-app.use(cookieParser('abcdefghjkmlnokq'))
-
-
+app.use(cookieParser(process.env.SECRET_SIGN_COOKIE))
 
 app.get('/', (req, res) => res.render('index', {
     name: 'Bạn'
