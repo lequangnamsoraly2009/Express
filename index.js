@@ -5,6 +5,7 @@ const bodyParser = require('body-parser')
 const userRoute = require('./routes/user.route')
 const authLogin = require('./routes/auth.route')
 const cookieParser = require('cookie-parser')
+var productRoute = require('./routes/product.route');
 const db = require('./db')
 
 
@@ -26,6 +27,7 @@ app.get('/', (req, res) => res.render('index', {
     name: 'Bạn'
 }));
 app.use('/users', authMiddleware.requireAuth, userRoute);
+app.use('/products', productRoute);
 app.use('/auth', authLogin);
 
 

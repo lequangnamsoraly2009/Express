@@ -1,0 +1,23 @@
+extends ../layouts/common
+
+block content
+  h1 Products
+  .row
+    each product in products
+        .col-lg-3
+            img(src=product.image, alt="alt")
+            .card-body
+                h5.card-title= product.name
+                p.card-text= product.description
+    nav(aria-label='Page navigation example')
+        ul.pagination.d-flex.justify-content-between
+            li.page-item
+            a.page-link(href=('/products?page=')) Previous
+            li.page-item    
+            a.page-link(href='/products?page=1') 1
+            li.page-item
+            a.page-link(href='/products?page=2') 2
+            li.page-item
+            a.page-link(href='/products?page=3') 3
+            li.page-item
+            a.page-link(href='/products?page=4') Next
